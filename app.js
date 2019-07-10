@@ -7,6 +7,7 @@ const Joi = BaseJoi.extend(Extension);
 const mongoose = require('mongoose');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
+const accounts = require('./routes/accounts');
 const express = require('express');
 const app = express();
  
@@ -23,6 +24,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.use(express.json());
 app.use('/signup/users', users);
 app.use('/login/auth', auth);
+app.use('/registeraccount/accounts' , accounts);
 let port =process.env.PORT|| 5000;
 app.listen(port, () => {
     console.log('Server is up and running on port  ' + port);

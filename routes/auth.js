@@ -1,4 +1,6 @@
 //const Joi = require('joi');
+
+const jwt = require('jsonwebtoken');
 const BaseJoi = require('@hapi/joi');
 const Extension = require('@hapi/joi-date');
 const Joi = BaseJoi.extend(Extension);
@@ -25,11 +27,10 @@ router.post('/', async (req, res) => {
     // those provided in the request
     const validPassword = await bcryptjs.compare(req.body.password, user.password);
     if (!validPassword) {
-        return res.status(400).send('Incorrect email or password.');
-
+        return res.status(400).json({error:'Incorrect email or password.'});
     }
- 
-    res.send(true);
+    const token = jwt.sign({ _id: user._id }, 'PrivateKey');
+    res.send(token);
 });
  
 function validate(req) {
