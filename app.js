@@ -8,6 +8,8 @@ const mongoose = require('mongoose');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
 const accounts = require('./routes/accounts');
+const withdraws = require('./routes/withdraws');
+const deposits = require('./routes/deposits');
 const express = require('express');
 const app = express();
  
@@ -25,6 +27,8 @@ app.use(express.json());
 app.use('/signup/users', users);
 app.use('/login/auth', auth);
 app.use('/registeraccount/accounts' , accounts);
+app.use('/withdrawmoney/withdraws', withdraws);
+app.use('/depositmoney/deposits', deposits);
 let port =process.env.PORT|| 5000;
 app.listen(port, () => {
     console.log('Server is up and running on port  ' + port);
