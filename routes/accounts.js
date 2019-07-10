@@ -22,6 +22,7 @@ router.post('/', async (req, res) => {
             status: req.body.status,
             type: req.body.type,
             accountCreationDate:req.body. accountCreationDate,
+            accnumber:req.body.accnumber,
             amount: req.body.amount,
            
         });

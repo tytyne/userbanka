@@ -39,6 +39,11 @@ const Account = mongoose.model('Account', new mongoose.Schema({
         
     },
 
+  accnumber: {
+        type: Number,
+        required: true
+        
+    },
     amount: {
         type: Number,
         required: true
@@ -53,6 +58,7 @@ function validateAccount(account) {
         status: Joi.string().min(5).max(50),
         type: Joi.string().min(5).max(50).required(),
         accountCreationDate:Joi.date().format('YYYY-MM-DD').required(),
+        accnumber:Joi.number().required(),
         amount: Joi.number().required(),
         
     };
